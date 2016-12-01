@@ -1,0 +1,7 @@
+Error semántico: tipoX izq(bool) no coincide tipo der (chars) --> "Fin" en la línea 11
+Error semántico: el valor de retorno no es correcto --> chars != bool: c en la línea 12
+Error semantico: tipo izqD(int) no coincide tipo der (bool) --> a en la línea 18
+Error semantico: la comprobacion de suma no es correcta Linea: 18
+Error Semático: la función sumar no está declarada con nº de parametros: 2 o con tipo de parametros distintos en la línea 23
+Error Semático: la función llamadaInexistente no está declarada con nº de parametros: 0 o con tipo de parametros distintos en la línea 24
+Fin de ejecuciOn

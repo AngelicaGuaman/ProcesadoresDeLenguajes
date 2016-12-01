@@ -1,0 +1,1 @@
+Error semántico: tipo izqE(bool) no coincide tipo der (int) --> 3 en la línea 4

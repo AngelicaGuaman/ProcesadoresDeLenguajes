@@ -1,0 +1,46 @@
+TABLA PRINCIPAL PALABRAS RESERVADAS #1:
+* LEXEMA: 'var'
+* LEXEMA: 'function'
+* LEXEMA: 'prompt'
+* LEXEMA: 'write'
+* LEXEMA: 'while'
+* LEXEMA: 'if'
+* LEXEMA: 'return'
+* LEXEMA: 'int'
+* LEXEMA: 'chars'
+* LEXEMA: 'bool'
+* LEXEMA: 'true'
+* LEXEMA: 'false'
+---------------------------------------------------------
+TABLA PRINCIPAL CON VARIABLES #2:
+* LEXEMA: 'a'
+ +tipo:'int'
+TABLA PRINCIPAL CON VARIABLES #3:
+* LEXEMA: 'b'
+ +tipo:'int'
+TABLA PRINCIPAL CON VARIABLES #4:
+* LEXEMA: 's'
+ +tipo:'chars'
+TABLA PRINCIPAL #5:
+* (Esto es una funcion) LEXEMA: 'verdad'
+ ATRIBUTOS:
+ +tipo:'bool'
+  +parametros:2
+   +tipoParam1:'int'
+    +tipoParam2:'int'
+CONTENIDO DE LA FUNCION verdad #6:
+* LEXEMA:'num1' (tipo de entrada 'parametro') 
+ +tipo:'int'
+* LEXEMA:'num2' (tipo de entrada 'parametro') 
+ +tipo:'int'
+TABLA PRINCIPAL #7:
+* (Esto es una funcion) LEXEMA: 'sumar'
+ ATRIBUTOS:
+ +tipo:'int'
+  +parametros:0
+CONTENIDO DE LA FUNCION sumar #8:
+* LEXEMA: 'c' (tipo de entrada 'variable')
+ +tipo:'bool'
+TABLA PRINCIPAL CON VARIABLES #9:
+* LEXEMA: 'nota'
+ +tipo:'int'

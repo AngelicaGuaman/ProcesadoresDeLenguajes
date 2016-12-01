@@ -1,0 +1,35 @@
+TABLA PRINCIPAL PALABRAS RESERVADAS #1:
+* LEXEMA: 'var'
+* LEXEMA: 'function'
+* LEXEMA: 'prompt'
+* LEXEMA: 'write'
+* LEXEMA: 'while'
+* LEXEMA: 'if'
+* LEXEMA: 'return'
+* LEXEMA: 'int'
+* LEXEMA: 'chars'
+* LEXEMA: 'bool'
+* LEXEMA: 'true'
+* LEXEMA: 'false'
+---------------------------------------------------------
+TABLA PRINCIPAL CON VARIABLES #2:
+* LEXEMA: 'num'
+ +tipo:'int'
+TABLA PRINCIPAL CON VARIABLES #3:
+* LEXEMA: 'yes'
+ +tipo:'chars'
+TABLA PRINCIPAL #4:
+* (Esto es una funcion) LEXEMA: 'sumaSimple'
+ ATRIBUTOS:
+ +tipo:'int'
+  +parametros:1
+   +tipoParam1:'int'
+CONTENIDO DE LA FUNCION sumaSimple #5:
+* LEXEMA:'b' (tipo de entrada 'parametro') 
+ +tipo:'int'
+TABLA PRINCIPAL CON VARIABLES #6:
+* LEXEMA: 'esFlag'
+ +tipo:'bool'
+TABLA PRINCIPAL CON VARIABLES #7:
+* LEXEMA: 'auxiliar'
+ +tipo:'int'

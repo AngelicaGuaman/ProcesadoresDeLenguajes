@@ -1,0 +1,78 @@
+
+
+PP -> P ////1 {TSG=crearTS()}
+P -> B P1 ////2 {if(B.tipo=P1.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR }
+P -> F P2 ////3 {if(F.tipo=P2.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR }
+P -> eof ////4 	{if(P.tipo=EOF) then TIPO_OK else TIPO_ERROR }
+
+F -> function HH id ( A ) { C } {TSL=crearTSL();esLocal=true, insertarIdTS=(TSG,id.entrada,HH.tipo), if(C.tipo=HH.tipo) then TIPO_OK}
+
+HH -> int 		{HH.tipo=int, HH.tam=2}
+HH -> chars  	{HH.tipo=chars, HH.tam=1}
+HH -> bool 		{HH.tipo=bool, HH.tam=1}
+HH -> lambda  	{HH.tipo=lambda}
+
+A -> H id R		 {if(H.tipo=TIPO_OK) then añadirTSL(TSL,id.entrada,H.tipo), if(R.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR }
+A -> lambda 	 {A.tipo=lambda}
+
+R -> , H id R 	{if(H.tipo=TIPO_OK) then añadirTSL(TSL,id.entrada,H.tipo), if(R.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR }
+R -> lambda 	{R.tipo=lambda}
+
+C -> B C 		{if(B.tipo=C.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR}
+C -> lambda 	{C.tipo=lambda}
+
+B -> var H id W 	{if(H.tipo=TIPO_OK && esLocal==true) then añadirTSL(TSL,id.entrada,H.tipo) else if(H.tipo=TIPO_OK) then añadirTSG(TSG,id.entrada,H.tipo),
+					if(W.tipo=TIPO_OK)then TIPO_OK else TIPO_ERROR}
+					
+B -> if ( E ) S 		{B.tipo:=(if (E.tipo=bool) then S.tipo else TIPO_ERROR)}
+B -> while ( E ) { C } 	{B.tipo:=(if (E.tipo=TIPO_OK) then C.tipo else TIPO_ERROR)}
+B -> S 					{B.tipo=S.tipo}
+
+S -> prompt ( id ) 		{S.tipo:=(añadirTSG(TSG,id.entrada,TIPO_OK))}
+S -> write ( E ) 		{S.tipo:=(if(E.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+S -> return X  			{S.tipo:=(if(X.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+S -> id SP 				{if(esLocal=true)then añadirTSL(TSL,id.entrada,H.tipo) else añadirTSG(TSG,id.entrada,H.tipo)}
+SP -> ( L ) 			{SP.tipo:=(if (L.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+SP -> = E 				{SP.tipo:=(if(E.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+SP -> -- 				
+
+X -> E 					{X.tipo=E.tipo}
+X -> lambda 			{X.tipo=lambda}
+ 
+H -> int				{H.tipo=int}
+H -> chars 				{H.tipo=chars}
+H -> bool 				{H.tipo=bool}
+
+W -> = E 				{W.tipo:=(if(E.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+W -> lambda 			{W.tipo=lambda}
+
+E -> T EP 				{E.tipo:=(if(T.tipo=EP.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+EP -> && T EP 			{EP.tipo:=(if(T.tipo=EP1.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+EP -> lambda 			{EP.tipo=lambda}
+		
+T -> U TP 				{T.tipo:=(if(U.tipo=TP.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+TP -> > U TP 			{TP.tipo:=(if(U.tipo=TP1.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+TP -> lambda			{TP.tipo=lambda}
+		
+U -> V UP 				{U.tipo:=(if(V.tipo=UP.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+UP -> + V UP 			{UP.tipo:=(if(V.tipo=UP1.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+UP -> lambda 			{Up.tipo=lambda}
+		
+V -> ( E )				{V.tipo:=(if (E.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+V -> num 				{V.tipo=int}
+V -> cadena 			{V.tipo=chars}
+V -> true 				{V.tipo=bool}
+V -> false 				{V.tipo=bool}
+V -> id VP 				{if(esLocal=true)then añadirTSL(TSL,id.entrada,H.tipo) else añadirTSG(TSG,id.entrada,H.tipo)}
+				
+VP -> ( L ) 			{VP.tipo:=(if (L.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR}
+VP -> -- 				
+VP -> = V 				{VP.tipo:=(if(V.tipo=TIPO_OK) then TIPO_OK else TIPO_ERROR)}
+VP -> lambda 			{VP.tipo=lambda}
+
+L -> E Q 				{L.tipo:=(if(E.tipo=Q.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+L -> lambda 			{L.tipo=lambda}
+
+Q -> , E Q 				{Q.tipo:=(if(E.tipo=Q.tipo=TIPO_OK)) then TIPO_OK else TIPO_ERROR}
+Q -> lambda 			{Q.tipo=lambda}
+

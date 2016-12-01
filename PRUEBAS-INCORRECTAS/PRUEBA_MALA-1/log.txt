@@ -1,0 +1,4 @@
+Error semántico: el valor de retorno no es correcto --> int != chars: num1 en la línea 10
+Error semantico: la comprobacion de postDecremento no es correcta Linea: 12
+Error semántico: el valor de retorno no es correcto --> int != bool: true en la línea 13
+Fin de ejecuciOn
